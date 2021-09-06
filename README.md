@@ -4,7 +4,8 @@
 This contains some of the projects given during the second trimester by ALX. It is based on Python, though with some shell scripting.
 ## PROJECTS
 This is the list of projects done this trimester that are in this category.
-1. 0x00-python-hello_world
+## **1**
+### 0x00-python-hello_world
 This introduces python.
 #### RESOURCES USED
 - [Whetting your Appetite](https://docs.python.org/3/tutorial/appetite.html)
