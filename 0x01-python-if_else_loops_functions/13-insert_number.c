@@ -31,10 +31,15 @@ listint_t *insert_node(listint_t **head, int number)
 		temp = start;
 		start = start->next;
 		if (number < start->n)
-			break;
+		{
+			temp->next = new;
+			new->next = start;
+			return (new);
+		}
+
 	}
 
 	temp->next = new;
-	new->next = start;
+
 	return (new);
 }
