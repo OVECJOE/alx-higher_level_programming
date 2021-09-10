@@ -1,6 +1,4 @@
-add_0.py
-0-import_add.py
+[a-zA-Z]*
 __pycache__
 cal*_1.*
-1-impo*.*
-*.pyc
+*-import*.*
