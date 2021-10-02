@@ -1,57 +1,59 @@
 #!/usr/bin/python3
-"""3-square.py - A module that contains a Square class"""
+"""Square Module"""
 
 
 class Square:
-    """defines a square by:
-
-    - private instance variable: size
-    - Instantiation with optional size
-    """
+    """Defines a squre with a private instance attribute called size"""
 
     def __init__(self, size=0, position=(0, 0)):
-        """Initialize the instance attribute"""
-        self.size = size
-        self.position = position
+        """instantializes a privated instance of a sqare"""
+        self.__size = size
+        self.__position = position
 
     @property
     def size(self):
-        """Retrieve the size of the square"""
+        """instatiation with opional size"""
         return self.__size
 
     @size.setter
     def size(self, value):
-        """Sets a new value for the size of the square"""
+        """Gets the size"""
+        self.__size = value
+
         if not isinstance(value, int):
             raise TypeError("size must be an integer")
         elif value < 0:
             raise ValueError("size must be >= 0")
-        self.__size = value
 
     @property
     def position(self):
-        """Gets the value of the position"""
+        """instatiation with opional position"""
         return self.__position
 
     @position.setter
     def position(self, value):
-        """Sets  the coordinates of the square"""
-        is_negative = not all(map(lambda x: x < 0, value))
-        if not isinstance(value, tuple) or len(value) != 2 or is_negative:
-            raise TypeError("position must be a tuple of 2 positive integers")
+        """Gets the position"""
         self.__position = value
 
+        if (not isinstance(value, tuple) or
+                len(value) != 2 or
+                not all(isinstance(num, int) for num in value) or
+                not all(num >= 0 for num in value)):
+            raise TypeError("position must be a tuple of 2 positive integers")
+
     def area(self):
-        """returns the area of the square"""
-        return self.__size ** 2
+        """Public instance method that returns the current square area"""
+        return (self.__size ** 2)
 
     def my_print(self):
-        """Prints the square to the screen"""
+        """Prints the square with the '#' character."""
+
         if self.__size == 0:
-            print()
-        else:
-            for i in range(self.__size):
-                print(" " * self.__position[0], end="")
-                for j in range(self.__size):
-                    print("#", end='')
-                print()
+            print("")
+            return
+        for i in range(0, self.__position[1]):
+            [print("")]
+        for i in range(0, self.size):
+            [print(" ", end="") for j in range(0, self.__position[0])]
+            [print("#", end="") for k in range(0, self.__size)]
+            print("")
