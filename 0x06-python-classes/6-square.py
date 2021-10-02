@@ -37,7 +37,7 @@ class Square:
     def position(self, value):
         """Sets  the coordinates of the square"""
         is_negative = not all(map(lambda x: x < 0, value))
-        if not isinstance(value, tuple) and len(value) != 2 and is_negative:
+        if not isinstance(value, tuple) or len(value) != 2 or is_negative:
             raise TypeError("position must be a tuple of 2 positive integers")
         self.__position = value
 
