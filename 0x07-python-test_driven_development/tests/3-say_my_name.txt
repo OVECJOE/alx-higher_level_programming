@@ -1,0 +1,52 @@
+# 3-say_my_name.txt
+# OVECJOE <ovecjoe123@gmail.com>
+
+====================
+3-say_my_name.py
+====================
+This documentation explains how the module ``3-say_my_name.py`` works
+
+USAGE
+=====
+
+In the module, there is only one function implemented; this function is called ``say_my_name``. The purpose of this function is to declare the user's full name to someone.
+
+EXAMPLES:
+To call the function, you pass one or two argument(s); the first_name and the last_name, which is optional. SO:
+
+::
+
+	>>> say_my_name = __import__("3-say_my_name").say_my_name
+	>>> say_my_name("Ovec", "Joe")
+	My name is Ovec Joe
+
+::
+
+	>>> say_my_name("Ovec")
+	My name is Ovec 
+
+Notice the space after ``first_name``, this shows that the ``last_name`` defaulted to
+an empty string.
+
+``say_my_name`` raises an TypeError if ``first_name`` or ``last_name`` is not a ``str`` object.
+
+::
+
+	>>> say_my_name(12)
+	Traceback (most recent call last):
+	TypeError: first_name must be a string
+
+::
+
+	>>> say_my_name("Ovec", 23)
+	Traceback (most recent call last):
+	TypeError: last_name must be a string
+
+If both arguments passed are not strings, it raises TypeError for ``first_name`` alone.
+
+::
+
+	>>> say_my_name(None, 12)
+	Traceback (most recent call last):
+	TypeError: first_name must be a string
+
