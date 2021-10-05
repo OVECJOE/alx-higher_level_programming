@@ -1,0 +1,102 @@
+# 0-matrix_divided.txt
+# OVECJOE <ovecjoe123@gmail.com>
+
+==============================
+HOW TO USE 2-MATRIX_DIVIDED.PY
+==============================
+
+This documentation shows you how to use the module ``2-matrix_divided.py``
+
+USAGE
+=====
+
+Present in ``2-matrix_divided.py`` is just one function: ``matrix_divided(...)``. This function takes two arguments:
+	matrix: a matrix of m x n dimension and
+	div: a divisor
+Let's see an example:
+
+::
+
+	>>> matrix = [[1, 2], [4, 3], [5, 5]]
+	>>> matrix_divided = __import__("2-matrix_divided").matrix_divided
+
+::
+
+	>>> matrix_divided(matrix, 3)
+	[[0.33, 0.67], [1.33, 1.0], [1.67, 1.67]]
+
+If the matrix is not a list of lists of integers or floats, it raises a
+TypeError:
+
+::
+
+	>>> matrix_divided([[1, '2'], [3, 2], ['3', 2]], 2) #doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+::
+
+	>>> matrix_divided([[None, 1], [3, 2], []], -1) #doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+If matrix is also empty, a TypeError is also raised:
+
+::
+
+	>>> matrix_divided([], 1) #doctest: +ELLIPSIS
+	Traceback (most recent call last):
+	...
+	TypeError: matrix must be a matrix (list of lists) of integers/floats
+
+What if ``div`` was anything other than a number?
+
+::
+
+	>>> matrix_divided([[1, 3], [-1, 3]], None)
+	Traceback (most recent call last):
+	TypeError: div must be a number
+
+This shows that it raises TypeError also if div is not a number
+
+::
+
+	>>> matrix_divided([[1, 3], [-1, 3]], 1+3j)
+	Traceback (most recent call last):
+	TypeError: div must be a number
+
+The above example shows that complex numbers are not also accepted!
+
+If div is equal to zero, it raises ZeroDivisionError
+
+::
+
+	>>> matrix_divided([[1, 3], [-1, 3]], 0)
+	Traceback (most recent call last):
+	ZeroDivisionError: division by zero
+
+If you didn't notice from above, ``matrix_divided`` also raises ``TypeError`` if the
+rows in the matrix are not of the same length.
+
+::
+
+	>>> matrix_divided([[1, 3], [2, 3], [1, 3, 4]], 3)
+	Traceback (most recent call last):
+	TypeError: Each row of the matrix must have the same size
+
+Also, if div is infinity, the result will become a zero matrix, regardless of the values
+
+::
+
+	>>> matrix_divided([[1, 2], [3, 4]], float("inf"))
+	[[0.0, 0.0], [0.0, 0.0]]
+
+If div = float("nan") - NaN - the result will be a matrix of whose elements are all NaN
+
+::
+
+	>>> matrix_divided([[1, 2], [3, 4]], float("nan"))
+	[[nan, nan], [nan, nan]]
+
