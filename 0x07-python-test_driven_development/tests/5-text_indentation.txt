@@ -65,3 +65,16 @@ EXAMPLES
 	<BLANKLINE>
 	I will list all that:
 	<BLANKLINE>	
+
+::
+
+	>>> text_indentation("I am a boy\n")
+	I am a boy
+
+If argument is not provided, the function fails:
+
+::
+
+	>>> text_indentation()
+	Traceback (most recent call last):
+	TypeError: text_indentation() missing 1 required positional argument: 'text'
