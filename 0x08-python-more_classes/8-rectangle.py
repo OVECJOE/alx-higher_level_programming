@@ -84,4 +84,4 @@ class Rectangle:
 
         if rect_1.area() == rect_2.area():
             return rect_1
-        return max((rect_1, rect_2), key=lambda x: x.area()) 
+        return max((rect_1, rect_2), key=lambda x: x.area())
