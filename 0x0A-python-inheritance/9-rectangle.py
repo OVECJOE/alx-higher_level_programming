@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """A module that contains a Rectangle class"""
+
 BaseGeometry = __import__("7-base_geometry").BaseGeometry
 
 
@@ -21,4 +22,4 @@ class Rectangle(BaseGeometry):
     def __str__(self):
         """print representation of the Rectangle object"""
         return "[{}] {:d}/{:d}".format(self.__class__.__name__,
-                self.__width, self.__height)
+                                       self.__width, self.__height)
