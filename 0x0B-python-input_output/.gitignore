@@ -2,5 +2,4 @@
 *.txt
 __pycache__
 *.json
-*class_*.py
 *my_class*.py
