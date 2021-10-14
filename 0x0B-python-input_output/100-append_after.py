@@ -20,5 +20,4 @@ def append_after(filename="", search_string="", new_string=""):
             lines.insert(idx + 1, new_string)
 
     with open(filename, "w", encoding="utf-8") as f:
-        for line in lines:
-            f.write(line)
+        f.write("".join(lines))
