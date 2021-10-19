@@ -211,3 +211,12 @@ class TestRectangleMethods(unittest.TestCase):
         self.r1.update(89)
         self.assertEqual(self.r1.to_dictionary(),
         {"id": 89, "width": 2, "height": 3, "x": 4, "y": 0})
+        self.r1.update(89, 1)
+        self.assertEqual(self.r1.to_dictionary(),
+        {"id": 89, "width": 1, "height": 3, "x": 4, "y": 0})
+        self.r1.update(89, 1, 2)
+        self.assertEqual(self.r1.to_dictionary(),
+        {"id": 89, "width": 1, "height": 2, "x": 4, "y": 0})
+        self.r1.update(89, 1, 2, 3, 4)
+        self.assertEqual(self.r1.to_dictionary(),
+        {"id": 89, "width": 1, "height": 2, "x": 3, "y": 4})
