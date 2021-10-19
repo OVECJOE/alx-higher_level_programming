@@ -2,6 +2,8 @@
 """A test suite for models/rectangle.py"""
 
 import unittest
+from unittest.mock import patch
+from io import StringIO
 
 from models.rectangle import Rectangle
 from models.base import Base
@@ -72,10 +74,18 @@ class TestRectangleInstantiationAndAttributes(unittest.TestCase):
 class TestRectangleMethods(unittest.TestCase):
     """A test suite for the Rectangle methods"""
 
+    def setUp(self):
+        """Set up instances and data for this class"""
+        self.r1 = Rectangle(3, 2)
+        self.r2 = Rectangle(2, 10)
+        self.r3 = Rectangle(8, 7, 0, 0, 12)
+
     def test_area(self):
-        r1 = Rectangle(3, 2)
-        self.assertEqual(r1.area(), 6)
-        r2 = Rectangle(2, 10)
-        self.assertEqual(r2.area(), 20)
-        r3 = Rectangle(8, 7, 0, 0, 12)
-        self.assertEqual(r3.area(), 56)
+        self.assertEqual(self.r1.area(), 6)
+        self.assertEqual(self.r2.area(), 20)
+        self.assertEqual(self.r3.area(), 56)
+
+    def test_display(self):
+        with patch('sys.stdout', new=StringIO()) as fake_stdout:
+            self.r1.display()
+            self.assertEqual(fake_stdout.getvalue(), '###\n###\n')
