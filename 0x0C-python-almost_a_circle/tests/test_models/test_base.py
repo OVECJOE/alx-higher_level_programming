@@ -1,5 +1,6 @@
 #!/usr/bin/python3
 """Test cases for models/base.py"""
+from turtle import position
 import unittest
 from unittest.mock import patch
 from io import StringIO
@@ -17,6 +18,14 @@ class TestBaseInstantiation(unittest.TestCase):
         self.polygon_1 = Base(1)
         self.polygon_2 = Base()
         self.polygon_3 = Base()
+
+    def test_miscellaneous(self):
+        self.assertEqual(self.polygon.id + 1, self.polygon_2.id)
+        self.assertEqual('0x11', Base('0x11').id)
+        self.assertFalse('nb_objects' in dir(Base))
+        self.assertFalse('__nb_objects' in dir(Base))
+        self.assertIsNotNone(Base(None).id)
+        self.assertNotEqual(None, Base(None))
 
     def test_base_objs_of_same_id_are_not_the_same_obj(self):
         self.assertFalse(self.polygon is self.polygon_1)
