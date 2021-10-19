@@ -204,3 +204,7 @@ class TestRectangleMethods(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as fake_stdout:
             print(self.r1, end="")
             self.assertEqual(fake_stdout.getvalue(), str(self.r1))
+
+        self.r1.update()
+        self.assertEqual(self.r1.to_dictionary(),
+        {"id": 23, "width": 2, "height": 3, "x": 4, "y": 0})
