@@ -36,11 +36,11 @@ class TestBaseInstantiation(unittest.TestCase):
 
     def test_that_no_error_is_raised_if_arg_is_a_str(self):
         b = Base("1")
-        self.assertIs(type(b.id), str)
+        self.assertIsInstance(b.id, str)
 
     def test_that_error_is_raised_if_arg_is_a_list(self):
         b = Base(list("base"))
-        self.assertIs(type(b.id), list)
+        self.assertIsInstance(b.id, list)
 
     def test_that_error_is_raised_when_accessing_private_class_attribute(self):
         with self.assertRaises(AttributeError):
