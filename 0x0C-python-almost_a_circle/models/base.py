@@ -62,9 +62,14 @@ class Base:
         Args:
             dictionary (dict): dictionary containing the attributes
         """
-        dummy = cls(3, 4)
-        dummy.update(**dictionary)
-        return dummy
+        polygons = {
+            'Rectangle': (1, 1, 0, 0),
+            'Square': (1, 0, 0, None)
+        }
+        if cls.__name__ in polygons.keys():
+            polygon = cls(*polygons[cls.__name__])
+            polygon.update(**dictionary)
+            return polygon
 
     @classmethod
     def load_from_file(cls):
