@@ -96,3 +96,10 @@ class TestRectangleMethods(unittest.TestCase):
         with patch('sys.stdout', new=StringIO()) as fake_stdout:
             print(self.r1, end="")
             self.assertEqual(fake_stdout.getvalue(), string)
+
+    def test_update(self):
+        self.r1.update(23, 2, 3, 4)
+        
+        with patch('sys.stdout', new=StringIO()) as fake_stdout:
+            print(self.r1, end="")
+            self.assertEqual(fake_stdout.getvalue(), str(self.r1))
