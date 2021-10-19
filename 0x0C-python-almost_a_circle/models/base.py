@@ -25,9 +25,9 @@ class Base:
         Args:
             list_dictionaries (list): a list of dictionaries
         """
-        if list_dictionaries is None:
+        if list_dictionaries is None and list_dictionaries == []:
             return "[]"
-        return json.JSONEncoder().encode(list_dictionaries)
+        return json.dumps(list_dictionaries)
 
     @classmethod
     def save_to_file(cls, list_objs):

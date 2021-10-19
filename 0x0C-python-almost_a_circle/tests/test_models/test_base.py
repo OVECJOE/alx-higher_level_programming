@@ -7,7 +7,7 @@ from models.base import Base
 
 class TestBaseInstantiation(unittest.TestCase):
     """Test suite for the Base class in models.base"""
-    
+
     def setUp(self):
         """SetUp for the TestBase class"""
         self.polygon = Base()
@@ -19,9 +19,10 @@ class TestBaseInstantiation(unittest.TestCase):
         self.assertFalse(self.polygon is self.polygon_1)
 
     def test_base_objs_without_arg_increment_by_one(self):
-        self.assertEqual(self.polygon_2.id - self.polygon.id, self.polygon_3.id - self.polygon_2.id)
+        self.assertEqual(self.polygon_2.id - self.polygon.id,
+                         self.polygon_3.id - self.polygon_2.id)
 
-    def test_that_the_first_and_third_base_obj_ids_difference_is_1_though_a_base_obj_with_given_id_is_in_between(self):
+    def test_that_the_first_and_third_base_obj_ids_difference(self):
         self.assertTrue(self.polygon_2.id - self.polygon.id == 1)
 
     def test_when_arg_given_is_bool(self):

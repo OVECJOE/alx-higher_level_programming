@@ -10,7 +10,8 @@ from models.base import Base
 
 
 class TestRectangleInstantiationAndAttributes(unittest.TestCase):
-    """Test suite for Rectangle instantiation and attributes in models.rectangle"""
+    """Test suite for Rectangle instantiation and attributes in
+    models.rectangle"""
 
     def test_rectangle_is_subclass_of_base(self):
         self.assertTrue(issubclass(Rectangle, Base))
@@ -99,7 +100,7 @@ class TestRectangleMethods(unittest.TestCase):
 
     def test_update(self):
         self.r1.update(23, 2, 3, 4)
-        
+
         with patch('sys.stdout', new=StringIO()) as fake_stdout:
             print(self.r1, end="")
             self.assertEqual(fake_stdout.getvalue(), str(self.r1))
