@@ -23,11 +23,11 @@ class Base:
         """returns the JSON string representation of list_dictionaries
 
         Args:
-            list_dictionaries (list({})): a list of dictionaries
+            list_dictionaries (list): a list of dictionaries
         """
-        if list_dictionaries is None or list_dictionaries == []:
+        if list_dictionaries is None:
             return "[]"
-        return json.dumps(list_dictionaries)
+        return json.JSONEncoder().encode(list_dictionaries)
 
     @classmethod
     def save_to_file(cls, list_objs):
