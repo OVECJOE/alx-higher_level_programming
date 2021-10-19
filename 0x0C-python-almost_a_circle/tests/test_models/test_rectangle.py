@@ -35,3 +35,35 @@ class TestRectangle(unittest.TestCase):
         rect1 = Rectangle(1, 2)
         rect2 = Rectangle(3, 2)
         self.assertEqual(rect2.id - rect1.id, 1)
+
+    def test_error_is_raised_if_width_not_int(self):
+        with self.assertRaises(TypeError):
+            rect = Rectangle(3.2, 2)
+
+    def test_error_is_raised_if_height_not_int(self):
+        with self.assertRaises(TypeError):
+            rect = Rectangle(1, "s")
+
+    def test_error_is_raised_if_x_not_int(self):
+        with self.assertRaises(TypeError):
+            rect = Rectangle(1, 2, True)
+
+    def test_error_is_raised_if_y_not_int(self):
+        with self.assertRaises(TypeError):
+            rect = Rectangle(1, 2, y="g")
+
+    def test_width_not_under_nor_equals_0(self):
+        with self.assertRaises(ValueError):
+            rect = Rectangle(-1, 3)
+
+    def test_height_not_under_nor_equals_0(self):
+        with self.assertRaises(ValueError):
+            rect = Rectangle(2, 0)
+
+    def test_x_not_under_0(self):
+        with self.assertRaises(ValueError):
+            rect = Rectangle(2, 1, -1)
+
+    def test_y_not_under_0(self):
+        with self.assertRaises(ValueError):
+            rect = Rectangle(2, 1, y=-1)
