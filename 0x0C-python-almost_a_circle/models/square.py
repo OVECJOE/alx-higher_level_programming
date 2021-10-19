@@ -16,10 +16,10 @@ class Square(Rectangle):
         return self.width
 
     @size.setter
-    def size(self, size):
+    def size(self, value):
         """Setter method for the size"""
-        self.width = size
-        self.height = size
+        self.width = value
+        self.height = value
 
     def __str__(self):
         """Overrides the __str__ of parent class - Rectangle"""
@@ -37,33 +37,13 @@ class Square(Rectangle):
             - y: the 4th argument
             **kwargs (dict): a dict of key-value arguments
         """
-        count = 0
-        for arg in args:
-            if count == 0:
-                if arg is None:
-                    self.__init(self.size, self.x, self.y, self.id)
-                else:
-                    self.id = arg
-            elif count == 1:
-                self.size = arg
-            elif count == 2:
-                self.x = arg
-            elif count == 3:
-                self.y = arg
-            count += 1
-
-        if kwargs:
-            keys = ["id", "size", "x", "y"]
-        for key, value in kwargs.items():
-            if key in keys and keys.index(key) >= count:
-                if key == keys[0]:
-                    self.id = value
-                elif key == keys[1]:
-                    self.size = value
-                elif key == keys[2]:
-                    self.x = value
-                elif key == keys[3]:
-                    self.y = value
+        attrs = ('id', 'size', 'x', 'y')
+        for key, val in zip(attrs, args):
+            setattr(self, key, val)
+        if (type(args) is None or len(args) == 0) and (type(kwargs) is dict):
+            for key, val in kwargs.items():
+                if key in attrs:
+                    setattr(self, key, val)
 
     def to_dictionary(self):
         """returns the dictionary representation of the object"""
