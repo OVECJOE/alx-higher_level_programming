@@ -157,6 +157,9 @@ class TestRectangleInstantiationAndAttributes(unittest.TestCase):
         with self.assertRaises(ValueError):
             rect = Rectangle(2, 1, y=-1)
 
+    def test_miscelleneous(self):
+        with self.assertRaises(ValueError):
+            rect = Rectangle(0, 2)
 
 class TestRectangleMethods(unittest.TestCase):
     """A test suite for the Rectangle methods"""
