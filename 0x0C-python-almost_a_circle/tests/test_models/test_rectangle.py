@@ -6,7 +6,6 @@ import unittest
 from models.rectangle import Rectangle
 
 
-class TestRectangleInstantiationAndAttributes(unittest.TestCase):
-    """Test suite for Rectangle instantiation and attributes in
-    models.rectangle"""
+class TestRectangle(unittest.TestCase):
+    """Test suite for Rectangle class"""
     pass
