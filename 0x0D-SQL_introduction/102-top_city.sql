@@ -1,5 +1,5 @@
 -- Displays the 3 cities with the highest temperatures btw July & August
-SELECT `city`, AVG(`value`) FROM `avg_temp`
+SELECT `city`, AVG(`value`) AS `avg_temp`
 FROM `temperatures`
 WHERE `month` = 7 OR `month` = 8
 GROUP BY `city`
