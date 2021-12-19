@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""Lists all states with a name starting with N from the database"""
 import MySQLdb
 import sys
 
@@ -14,8 +15,8 @@ if __name__ == "__main__":
     cursor.execute("""
     SELECT * FROM states
     WHERE name IS NOT NULL
-    AND LEFT(name, 1) = "N"
-    ORDER BY id;
+    AND LEFT(name, 1) = 'N'
+    ORDER BY states.id;
     """)
     records = cursor.fetchall()
     for record in records:
