@@ -16,7 +16,7 @@ if __name__ == "__main__":
         cursor.execute("""
         SELECT * FROM states
         WHERE name IS NOT NULL
-        AND LEFT(CAST(name AS BINARY), 1) = 'N'
+        AND LEFT(name, 1) = 'N'
         ORDER BY states.id;
         """)
         records = cursor.fetchall()
