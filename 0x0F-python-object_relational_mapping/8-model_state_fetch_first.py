@@ -12,11 +12,11 @@ from model_state import Base, State
 
 if __name__ == "__main__":
     engine = create_engine("mysql://{}:{}@localhost:3306/{}"
-    .format(*sys.argv[1:]))
+                           .format(*sys.argv[1:]))
     Base.metadata.create_all(engine)
     session = sessionmaker(bind=engine)()
     record = session.query(State).first()
-    if record:
+    if record is not None:
         print("{}: {}".format(record.id, record.name))
     else:
         print("Nothing")
