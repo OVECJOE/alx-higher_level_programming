@@ -17,6 +17,6 @@ if __name__ == "__main__":
     session = sessionmaker(bind=engine)()
     record = session.query(State).first()
     if record:
-        print("1: {}".format(record.name))
+        print("{}: {}".format(record.id, record.name))
     else:
-        print()
+        print("Nothing")
