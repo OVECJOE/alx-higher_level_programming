@@ -21,10 +21,9 @@ if __name__ == "__main__":
             SELECT cities.name FROM cities
             INNER JOIN states
             ON cities.state_id = states.id
-            WHERE CAST(cities.name AS BINARY) = '{:s}'
+            WHERE CAST(states.name AS BINARY) = %s
             ORDER BY cities.id;
-        """.format(sys.argv[4]))
+        """, [sys.argv[4]])
         records = cursor.fetchall()
-        for record in records:
-            print(record)
+        print(", ".join(map(lambda x: x[0], records)))
         db.close()
