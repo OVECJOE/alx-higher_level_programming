@@ -1,4 +1,5 @@
 #!/usr/bin/python3
+"""A script that lists cities by states in a database"""
 import MySQLdb
 import sys
 
