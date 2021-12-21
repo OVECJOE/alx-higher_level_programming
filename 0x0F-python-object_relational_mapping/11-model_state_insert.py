@@ -3,6 +3,7 @@
 A script that adds the State object "Louisiana" to the database
 hbtn_0e_6_usa
 """
+from typing import final
 from sqlalchemy.orm import sessionmaker
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.engine import create_engine
@@ -15,6 +16,15 @@ if __name__ == "__main__":
         *sys.argv[1:])
     engine = create_engine(DATABASE_URL)
     session = sessionmaker(bind=engine)()
-    session.add(State(name="Louisiana"))
-    record = session.query(State).filter(State.name == "Louisiana").first()
-    print(record.id if record is not None else "")
+    record = State(name="Louisiana")
+    session.add(record)
+
+    try:
+        session.flush()
+        session.refresh(record)
+        if record is not None:
+            print("{}".format(record.id))
+    except Exception:
+        session.rollback()
+    finally:
+        session.commit()
