@@ -6,7 +6,15 @@ import sys
 if __name__ == "__main__":
     username = sys.argv[1]
     password = sys.argv[2]
-    r = requests.get('https://api.github.com/users/{}'.format(username),
-            params={'token': password})
-    json_data = r.json()
-    print(json_data.get('id', None))
+    url = 'https://api.github.com/user'
+    headers = {
+            'Accept': 'application/vnd.github.v3+json',
+            'Username': username,
+            'Authorization': 'token {}'.format(password),
+            }
+    r = requests.get(url, headers=headers)
+    if r.ok:
+        json_data = r.json()
+        print(json_data.get('id', None))
+    else:
+        print(None)
