@@ -1,4 +1,4 @@
-$("#add_item").click(
+$('#add_item').click(
 	 () => {
-		 $("ul.my_list").append("<li>Item</li>");
+		 $('ul.my_list').append('<li>Item</li>');
 	 });
